@@ -5,8 +5,8 @@ import ua.melnyk.training.beans.ConsoleEventLogger;
 
 public class App {
 
-    Client client=new Client();
-    ConsoleEventLogger eventLogger=new ConsoleEventLogger();
+    private Client client;
+    private ConsoleEventLogger eventLogger;
     public static void main(String[] args) {
         App app = new App();
 
