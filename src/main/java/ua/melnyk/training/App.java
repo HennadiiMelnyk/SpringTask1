@@ -3,7 +3,8 @@ package ua.melnyk.training;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.melnyk.training.beans.Client;
-import ua.melnyk.training.beans.loggers.ConsoleEventLogger;
+import ua.melnyk.training.beans.Event;
+import ua.melnyk.training.loggers.ConsoleEventLogger;
 
 public class App {
 
@@ -12,22 +13,27 @@ public class App {
 
     public App(Client client, ConsoleEventLogger consoleEventLogger) {
         super();
-        this.client=client;
-        this.eventLogger=consoleEventLogger;
+        this.client = client;
+        this.eventLogger = consoleEventLogger;
     }
 
     public static void main(String[] args) {
-        ApplicationContext ctx=new ClassPathXmlApplicationContext("spring.xml");
-        App app = ctx.getBean("app",App.class);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        App app = ctx.getBean("app", App.class);
 
         app.client = new Client("1", "John");
         app.eventLogger = new ConsoleEventLogger();
-        app.logEvent("Some event for user 1 ");
+
+        Event event = ctx.getBean(Event.class);
+        app.logEvent(event, "Some event for 1");
+
+
     }
 
-    private void logEvent(String msg) {
+    private void logEvent(Event event, String msg) {
         String message = msg.replaceAll(client.getId(), client.getFullName());
-        eventLogger.logEvent(message);
+        event.setMessage(message);
+        eventLogger.logEvent(event);
 
     }
 }

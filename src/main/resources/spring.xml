@@ -4,13 +4,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="client" class="ua.melnyk.training.beans.Client">
-            <constructor-arg value="1" />
+        <constructor-arg value="1"/>
         <constructor-arg value="Jorfan"/>
     </bean>
-    <bean id="eventLogger" class="ua.melnyk.training.beans.loggers.ConsoleEventLogger"/>
+    <bean id="eventLogger" class="ua.melnyk.training.loggers.ConsoleEventLogger"/>
     <bean id="app" class="ua.melnyk.training.App">
-           <constructor-arg ref="client"/>
+        <constructor-arg ref="client"/>
         <constructor-arg ref="eventLogger"/>
-            </bean>
+    </bean>
+    <bean id="event" class="ua.melnyk.training.beans.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+    </bean>
+    <bean id="dateFormat" class="java.text.DateFormat"
+          factory-method="getDateTimeInstance"/>
 
 </beans>
