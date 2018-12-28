@@ -7,7 +7,7 @@
             <constructor-arg value="1" />
         <constructor-arg value="Jorfan"/>
     </bean>
-    <bean id="eventLogger" class="ua.melnyk.training.beans.ConsoleEventLogger"/>
+    <bean id="eventLogger" class="ua.melnyk.training.beans.loggers.ConsoleEventLogger"/>
     <bean id="app" class="ua.melnyk.training.App">
            <constructor-arg ref="client"/>
         <constructor-arg ref="eventLogger"/>

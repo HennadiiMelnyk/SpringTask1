@@ -3,7 +3,7 @@ package ua.melnyk.training;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.melnyk.training.beans.Client;
-import ua.melnyk.training.beans.ConsoleEventLogger;
+import ua.melnyk.training.beans.loggers.ConsoleEventLogger;
 
 public class App {
 

@@ -1,4 +1,4 @@
-package ua.melnyk.training.beans;
+package ua.melnyk.training.beans.loggers;
 
 public interface EventLogger {
 
