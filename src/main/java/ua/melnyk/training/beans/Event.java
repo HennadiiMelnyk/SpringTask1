@@ -1,6 +1,7 @@
 package ua.melnyk.training.beans;
 
 import java.text.DateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -13,10 +14,10 @@ public class Event {
 
     public Event(Date date, DateFormat df) {
         this.id = ID_GENERATOR.getAndIncrement();
-
         this.date = date;
         this.dateFormat = df;
     }
+
     public String getMessage() {
         return message;
     }
